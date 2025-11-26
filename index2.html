@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivedha S | Professional Portfolio</title>
+    <!-- Fonts: Montserrat & Open Sans (Classic Professional Combo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS Variables for Theme --- */
+        :root {
+            /* Dark Theme inspired by the video's footer description */
+            --primary-bg: #0f172a;      /* Deep Navy */
+            --secondary-bg: #1e293b;    /* Lighter Navy for cards/sections */
+            --text-main: #f1f5f9;       /* White-ish */
+            --text-muted: #94a3b8;      /* Grey */
+            --accent: #38bdf8;          /* Bright Blue/Cyan */
+            --accent-hover: #0ea5e9;
+            --border-color: rgba(255,255,255,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Header / Navigation --- */
+        header {
+            background-color: var(--primary-bg);
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent);
+        }
+
+        .btn-nav {
+            padding: 0.5rem 1.2rem;
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            color: var(--accent) !important;
+        }
+
+        .btn-nav:hover {
+            background-color: var(--accent);
+            color: var(--primary-bg) !important;
+        }
+
+        /* --- Hero Section (Text Left, Image Right) --- */
+        .hero {
+            padding: 8rem 10% 4rem; /* Top padding for fixed header */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 90vh;
+            gap: 3rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-subtitle {
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--primary-bg);
+            padding: 1rem 2rem;
+            font-weight: 700;
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--text-main);
+            padding: 1rem 2rem;
+            font-weight: 600;
+            margin-left: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 400px;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 20px 20px 0px var(--secondary-bg); /* Block shadow effect */
+            border: 2px solid var(--accent);
+        }
+
+        /* --- Stats Strip (Common in Astra Templates) --- */
+        .stats-strip {
+            background-color: var(--secondary-bg);
+            padding: 3rem 10%;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 0;
+        }
+
+        .stat-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- About Section --- */
+        .section-padding {
+            padding: 6rem 10%;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Underline effect */
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+
+        /* --- Skills Grid --- */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background-color: var(--secondary-bg);
+            padding: 2.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.25rem;
+        }
+
+        .skill-card ul {
+            color: var(--text-muted);
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .skill-card li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-card li::before {
+            content: '•';
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        /* --- Experience (Clean List Style) --- */
+        .experience-item {
+            display: flex;
+            gap: 2rem;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .exp-date {
+            min-width: 150px;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1rem;
+            padding-top: 5px;
+        }
+
+        .exp-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .exp-company {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .exp-content ul {
+            padding-left: 1rem;
+        }
+        
+        .exp-content li {
+            list-style-type: disc;
+            color: var(--text-main); /* Brighter text for readability */
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        /* --- Projects Grid --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--secondary-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-tags {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .project-tag {
+            font-size: 0.75rem;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+        }
+
+        /* --- CTA Section --- */
+        .cta-section {
+            background-color: var(--accent);
+            color: var(--primary-bg);
+            text-align: center;
+            padding: 5rem 10%;
+        }
+
+        .cta-section h2 {
+            color: var(--primary-bg);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-white {
+            background-color: var(--primary-bg);
+            color: var(--accent);
+            padding: 1rem 2.5rem;
+            font-weight: 700;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+        .btn-white:hover {
+            background-color: white;
+            transform: scale(1.05);
+        }
+
+        /* --- Footer (Multi-Column) --- */
+        footer {
+            background-color: #020617; /* Very dark navy */
+            padding: 4rem 10% 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links a {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--primary-bg);
+        }
+
+        .copyright {
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 7rem;
+            }
+            
+            .hero-image {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .hero-image img {
+                width: 100%;
+                max-width: 350px;
+                height: 350px;
+            }
+
+            .experience-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-menu {
+                display: none; /* Hidden on mobile for simplicity */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Nivedha S.</div>
+        <nav class="nav-menu">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact" class="btn-nav">Contact Me</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <span class="hero-subtitle">MBA Candidate & Analyst</span>
+            <h1>Hi, I am <br> <span style="color: var(--accent);">Nivedha S</span></h1>
+            <p>I specialize in marketing analytics, survey design, and digital strategies. I help businesses optimize performance through data-driven storytelling.</p>
+            
+            <div class="cta-buttons">
+                <!-- Download CV Button (Feature from video) -->
+                <a href="resume.pdf" download class="btn-primary"><i class="fas fa-download"></i> Download CV</a>
+                <a href="#projects" class="btn-secondary">View Work</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <!-- Ensure profile.jpg is in the same folder -->
+            <img src="profile.jpg" alt="Nivedha S">
+        </div>
+    </section>
+
+    <!-- Stats Banner -->
+    <section class="stats-strip">
+        <div class="stat-item">
+            <h3>1+</h3>
+            <p>Years Experience</p>
+        </div>
+        <div class="stat-item">
+            <h3>20+</h3>
+            <p>Projects Done</p>
+        </div>
+        <div class="stat-item">
+            <h3>100%</h3>
+            <p>Client Satisfaction</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="section-header">
+            <h2>About Me</h2>
+        </div>
+        <div style="max-width: 800px;">
+            <p style="font-size: 1.1rem; color: var(--text-muted);">
+                Highly motivated MBA candidate with a B.Tech background, specializing in Marketing and Analytics. Skilled in leveraging data-driven insights, survey analysis, and visualization tools to support strategic decision-making. Eager to apply research methodologies to uncover market opportunities and optimize marketing strategies.
+            </p>
+            <br>
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                <div>
+                    <i class="fas fa-graduation-cap" style="color: var(--accent); margin-right: 8px;"></i>
+                    <strong>MBA (Marketing & Analytics)</strong> - Amrita School of Business (2025)
+                </div>
+                <div>
+                    <i class="fas fa-university" style="color: var(--accent); margin-right: 8px;"></i>
+                    <strong>B.E. CSE</strong> - PSNA College (2023)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding" style="background-color: #162032;">
+        <div class="section-header">
+            <h2>My Expertise</h2>
+        </div>
+        <div class="skills-container">
+            <!-- Card 1 -->
+            <div class="skill-card">
+                <i class="fas fa-chart-pie skill-icon"></i>
+                <h3>Data Analytics</h3>
+                <ul>
+                    <li>Power BI & Tableau</li>
+                    <li>Excel (Advanced)</li>
+                    <li>Survey Design</li>
+                </ul>
+            </div>
+            <!-- Card 2 -->
+            <div class="skill-card">
+                <i class="fas fa-code skill-icon"></i>
+                <h3>Technical</h3>
+                <ul>
+                    <li>Python & R</li>
+                    <li>SQL Database</li>
+                    <li>Java / Spring</li>
+                    <li>Prompt Engineering</li>
+                </ul>
+            </div>
+            <!-- Card 3 -->
+            <div class="skill-card">
+                <i class="fas fa-bullhorn skill-icon"></i>
+                <h3>Marketing</h3>
+                <ul>
+                    <li>SEO & SEM</li>
+                    <li>Google AdWords</li>
+                    <li>Market Research</li>
+                    <li>Report Development</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section (Vertical Layout) -->
+    <section id="experience" class="section-padding">
+        <div class="section-header">
+            <h2>Work Experience</h2>
+        </div>
+        
+        <div class="experience-list">
+            
+            <div class="experience-item">
+                <div class="exp-date">Mar 2025 – Sep 2025</div>
+                <div class="exp-content">
+                    <h3>Freelance Coding Educator</h3>
+                    <span class="exp-company">BrightChamps</span>
+                    <ul>
+                        <li>Delivered engaging programming lessons focusing on logic building and computational thinking.</li>
+                        <li>Developed beginner curricula for learners of various ages, improving learning engagement.</li>
+                        <li>Collaborated closely with parents, resulting in increased course referrals.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-date">Sep 2024 – Feb 2025</div>
+                <div class="exp-content">
+                    <h3>Freelance Prompt Engineer</h3>
+                    <span class="exp-company">Soul AI</span>
+                    <ul>
+                        <li>Created AI-driven automation prompts and chatbot logic for startups increasing client productivity by 50%.</li>
+                        <li>Developed comprehensive reusable prompt libraries and trained clients.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-date">Oct 2023 – Nov 2023</div>
+                <div class="exp-content">
+                    <h3>Trainee – Technology Analyst</h3>
+                    <span class="exp-company">Deloitte</span>
+                    <ul>
+                        <li>Assisted in development of multi-module ERP system leveraging Java and Spring framework.</li>
+                        <li>Developed automation scripts to streamline repetitive data processes.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-date">May 2023 – Jun 2023</div>
+                <div class="exp-content">
+                    <h3>Business Analyst Intern</h3>
+                    <span class="exp-company">Kulture Hire</span>
+                    <ul>
+                        <li>Led analysis of over 2,000 survey responses to identify Gen-Z career trends.</li>
+                        <li>Designed Power BI dashboards enhancing reporting efficiency by 30%.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding" style="background-color: #162032;">
+        <div class="section-header">
+            <h2>Featured Projects</h2>
+        </div>
+        <div class="projects-grid">
+            
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Market Basket Analysis</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Conducted high-confidence product association mining to support retail bundling strategies.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">R Language</span>
+                        <span class="project-tag">Data Mining</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Dog Breed Classifier</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Improved classification accuracy by 15% using ResNet and VGG deep learning models on 20k+ images.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Deep Learning</span>
+                        <span class="project-tag">Python</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>ESG Dashboard</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Created interactive dashboards analyzing sustainability metrics for investor relations.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Visualization</span>
+                        <span class="project-tag">Finance</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <h2>Ready to collaborate?</h2>
+        <p style="margin-bottom: 2rem; opacity: 0.9;">I am currently open to new opportunities in Marketing Analytics and Data Strategy.</p>
+        <a href="mailto:nivedha207@gmail.com" class="btn-white">Get in Touch</a>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 1rem;">Nivedha S.</div>
+                <p>Data-driven marketer and analyst bridging the gap between technical insights and business strategy.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a href="#about">About Me</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#experience">Experience</a>
+                    <a href="resume.pdf">Download Resume</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/nivedha-s-5670a936a"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Nivehhh"><i class="fab fa-github"></i></a>
+                    <a href="mailto:nivedha207@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+                <p style="margin-top: 1rem;">nivedha207@gmail.com</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Nivedha S. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
