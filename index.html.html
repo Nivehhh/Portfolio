@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivedha S | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #2dd4bf; /* Teal */
+            --accent-hover: #14b8a6;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 70%);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icons a {
+            color: var(--text-secondary);
+            font-size: 1.8rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px rgba(45, 212, 191, 0.4);
+        }
+
+        /* --- General Sections --- */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+
+        .section-title span {
+            border-bottom: 3px solid var(--accent);
+        }
+
+        /* --- Summary --- */
+        .summary-content {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* --- Skills --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(45, 212, 191, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* --- Experience (Timeline) --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--card-bg);
+            top: 0;
+            bottom: 0;
+            left: 0;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 1rem 2rem;
+            position: relative;
+            margin-bottom: 2rem;
+            border-left: 2px solid var(--accent);
+            background: linear-gradient(90deg, rgba(45, 212, 191, 0.05) 0%, transparent 100%);
+            border-radius: 0 10px 10px 0;
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            background: linear-gradient(90deg, rgba(45, 212, 191, 0.1) 0%, transparent 100%);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .timeline-company {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-list li {
+            margin-left: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-secondary);
+        }
+
+        /* --- Projects --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border-color: var(--accent);
+        }
+
+        .project-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        /* --- Certs & Extra --- */
+        .list-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .info-box {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+        .info-box ul {
+            list-style: none;
+        }
+        .info-box li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .info-box li:last-child {
+            border-bottom: none;
+        }
+        .info-box i {
+            color: var(--accent);
+            margin-right: 10px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #0b1120;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Hide nav on small screens for simplicity */
+            section { padding: 3rem 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Nivedha S.</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>Nivedha S</h1>
+        <p>MBA Candidate | <span id="typing-text"></span></p>
+        
+        <div class="social-icons">
+            <a href="mailto:nivedha207@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/nivedha-s-5670a936a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Nivehhh" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://medium.com/@nivedha207_51205" target="_blank" title="Medium"><i class="fab fa-medium"></i></a>
+        </div>
+        
+        <a href="#experience" class="btn">View My Work</a>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title"><span>About Me</span></h2>
+        <div class="summary-content">
+            <p>Highly motivated MBA candidate with a B.Tech background, specializing in Marketing and Analytics. Skilled in leveraging data-driven insights, survey analysis, and visualization tools to support strategic decision-making. Eager to apply Zoho tools and research methodologies to uncover market opportunities and optimize marketing strategies.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title"><span>Technical Skills</span></h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3><i class="fas fa-chart-line"></i> Analytics</h3>
+                <div class="tags">
+                    <span class="tag">Excel</span>
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Zoho Analytics</span>
+                    <span class="tag">Google AdWords</span>
+                    <span class="tag">Zoho Survey</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Programming</h3>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">R</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Java</span>
+                    <span class="tag">Spring Framework</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-brain"></i> Competencies</h3>
+                <div class="tags">
+                    <span class="tag">Market Research</span>
+                    <span class="tag">SEO / SEM</span>
+                    <span class="tag">Storytelling</span>
+                    <span class="tag">Critical Thinking</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title"><span>Experience</span></h2>
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <div class="timeline-date">Mar 2025 – Sep 2025</div>
+                <h3 class="timeline-title">Freelance Coding Educator</h3>
+                <div class="timeline-company">BrightChamps</div>
+                <ul class="timeline-list">
+                    <li>Delivered engaging programming lessons focusing on logic building, problem solving, and computational thinking.</li>
+                    <li>Developed beginner curricula for learners of various ages, improving learning engagement.</li>
+                    <li>Collaborated closely with parents, resulting in increased course referrals.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Sep 2024 – Feb 2025</div>
+                <h3 class="timeline-title">Freelance Prompt Engineer</h3>
+                <div class="timeline-company">Soul AI</div>
+                <ul class="timeline-list">
+                    <li>Created AI-driven automation prompts increasing client productivity by up to 50%.</li>
+                    <li>Developed comprehensive reusable prompt libraries and trained clients in effective AI tool use.</li>
+                    <li>Implemented custom AI workflows tailored for market research data enrichment tasks.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Oct 2023 – Nov 2023</div>
+                <h3 class="timeline-title">Trainee – Technology Analyst</h3>
+                <div class="timeline-company">Deloitte</div>
+                <ul class="timeline-list">
+                    <li>Assisted in development of multi-module ERP system leveraging Java and Spring framework.</li>
+                    <li>Developed automation scripts to streamline repetitive data processes within enterprise data flows.</li>
+                    <li>Collaborated with cross-functional analytics teams to deliver actionable data insights.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">May 2023 – Jun 2023</div>
+                <h3 class="timeline-title">Business Analyst Intern</h3>
+                <div class="timeline-company">Kulture Hire</div>
+                <ul class="timeline-list">
+                    <li>Led analysis of over 2,000 survey responses to identify Gen-Z career trends.</li>
+                    <li>Designed Power BI dashboards enhancing reporting efficiency by 30%.</li>
+                    <li>Created detailed reports summarizing recruitment trends to aid talent acquisition strategies.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title"><span>Key Projects</span></h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3><i class="fas fa-shopping-cart"></i> Market Basket Analysis (R)</h3>
+                <p>Conducted high-confidence product association mining to support retail bundling strategies and optimize sales.</p>
+            </div>
+            <div class="project-card">
+                <h3><i class="fas fa-leaf"></i> ESG Performance Dashboard</h3>
+                <p>Created interactive dashboards analyzing sustainability metrics to inform investor relations and corporate strategies.</p>
+            </div>
+            <div class="project-card">
+                <h3><i class="fas fa-dog"></i> Dog Breed Classifier</h3>
+                <p>Improved classification accuracy by 15% using ResNet and VGG models on 20,000+ images; enhanced interpretability via Grad-CAM.</p>
+            </div>
+            <div class="project-card">
+                <h3><i class="fas fa-chart-bar"></i> Stock Market Trends</h3>
+                <p>Developed multi-indicator models to improve prediction accuracy by 15%, validated over 100,000+ financial records.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="list-grid">
+            <div class="info-box">
+                <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                <ul>
+                    <li>
+                        <strong>MBA (Marketing & Analytics)</strong><br>
+                        Amrita School of Business (Ongoing, 2025)<br>
+                        <small>GPA: 7.4/10</small>
+                    </li>
+                    <li>
+                        <strong>B.E. Computer Science</strong><br>
+                        PSNA College of Engineering (2019 - 2023)<br>
+                        <small>CGPA: 8.35/10</small>
+                    </li>
+                </ul>
+            </div>
+            <div class="info-box">
+                <h3><i class="fas fa-certificate"></i> Certifications</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Microsoft Azure AI Fundamentals</li>
+                    <li><i class="fas fa-check-circle"></i> Oracle Certified Foundation Associate</li>
+                </ul>
+                <h3 style="margin-top: 1.5rem;"><i class="fas fa-users"></i> Extracurriculars</h3>
+                <ul>
+                    <li><i class="fas fa-lightbulb"></i> Innovators Club Member</li>
+                    <li><i class="fas fa-briefcase"></i> BIZIT Committee Member</li>
+                    <li><i class="fas fa-robot"></i> Robotics Club Member</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Nivedha S. Built with passion & code.</p>
+    </footer>
+
+    <script>
+        // Simple Typing Effect
+        const textElement = document.getElementById('typing-text');
+        const phrases = ["Data Analyst", "Marketer", "Tech Enthusiast"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                setTimeout(type, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                setTimeout(type, 500);
+            } else {
+                setTimeout(type, isDeleting ? 100 : 200);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', type);
+    </script>
+</body>
+</html>
+
+
+
+
